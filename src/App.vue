@@ -1,18 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="cart">
+      <p>Cart({{ cart.length }})</p>
+    </div>
+    <Learn pic="cat1.png" :premium="premium" @add-to-cart="updateCart"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Learn from './components/Learn';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Learn
+  },
+  data () {
+    return {
+      premium: true,
+      cart: [],
+    };
+  },
+  methods: {
+    updateCart(id) {
+      this.cart.push(id);
+    },
+  },
 }
 </script>
 
